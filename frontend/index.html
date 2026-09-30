@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Research Opportunity Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Masthead -->
+  <header class="masthead">
+    <div class="masthead__inner">
+      <div class="masthead__title">
+        <span class="masthead__mark">RO</span>
+        <div>
+          <h1>Research Opportunity Portal</h1>
+          <p>Faculty postings, in one place</p>
+        </div>
+      </div>
+      <button class="btn btn--primary" id="openCreateBtn">Post an opportunity</button>
+    </div>
+  </header>
+
+  <!-- Filter bar -->
+  <section class="filterbar">
+    <div class="filterbar__inner">
+      <input type="search" id="searchInput" placeholder="Search by title, skill, or faculty…" />
+      <select id="departmentFilter">
+        <option value="">All departments</option>
+      </select>
+      <select id="statusFilter">
+        <option value="">Open &amp; closed</option>
+        <option value="Open">Open only</option>
+        <option value="Closed">Closed only</option>
+      </select>
+      <span class="filterbar__count" id="resultCount"></span>
+    </div>
+  </section>
+
+  <!-- Main listing -->
+  <main class="listing" id="listing">
+    <p class="empty-state" id="emptyState" hidden>No opportunities match your search yet.</p>
+    <div class="listing__items" id="listingItems"></div>
+  </main>
+
+  <!-- Detail slide-over -->
+  <div class="overlay" id="detailOverlay" hidden>
+    <aside class="detail" id="detailPanel">
+      <button class="detail__close" id="detailCloseBtn" aria-label="Close">×</button>
+      <div id="detailContent"></div>
+    </aside>
+  </div>
+
+  <!-- Create / Edit modal -->
+  <div class="overlay" id="formOverlay" hidden>
+    <div class="modal">
+      <button class="detail__close" id="formCloseBtn" aria-label="Close">×</button>
+      <h2 id="formTitle">Post a research opportunity</h2>
+      <form id="opportunityForm" novalidate>
+        <input type="hidden" id="opportunityId" />
+
+        <label>Research title
+          <input type="text" id="title" required maxlength="200" />
+        </label>
+
+        <label>Description
+          <textarea id="description" rows="4" required></textarea>
+        </label>
+
+        <div class="form-row">
+          <label>Research area
+            <input type="text" id="research_area" required maxlength="150" />
+          </label>
+          <label>Department
+            <input type="text" id="department" required maxlength="150" />
+          </label>
+        </div>
+
+        <label>Faculty member's name
+          <input type="text" id="faculty_name" required maxlength="150" />
+        </label>
+
+        <label>Required skills
+          <input type="text" id="required_skills" required maxlength="500" placeholder="Comma-separated, e.g. Python, statistics" />
+        </label>
+
+        <div class="form-row">
+          <label>Available positions
+            <input type="number" id="positions_available" min="1" step="1" required />
+          </label>
+          <label>Application deadline
+            <input type="date" id="application_deadline" required />
+          </label>
+        </div>
+
+        <label>Status
+          <select id="status">
+            <option value="Open">Open</option>
+            <option value="Closed">Closed</option>
+          </select>
+        </label>
+
+        <p class="form-error" id="formError" hidden></p>
+
+        <div class="form-actions">
+          <button type="button" class="btn btn--ghost" id="cancelFormBtn">Cancel</button>
+          <button type="submit" class="btn btn--primary" id="submitFormBtn">Save opportunity</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Delete confirm -->
+  <div class="overlay" id="deleteOverlay" hidden>
+    <div class="modal modal--small">
+      <h2>Delete this opportunity?</h2>
+      <p id="deleteWarning">This can't be undone once removed.</p>
+      <div class="form-actions">
+        <button type="button" class="btn btn--ghost" id="cancelDeleteBtn">Cancel</button>
+        <button type="button" class="btn btn--danger" id="confirmDeleteBtn">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" hidden></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+{
+  "info": {
+    "name": "Research Opportunity Portal API",
+    "description": "CRUD testing collection for the Research Opportunity Portal backend.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5000/api/opportunities" },
+    { "key": "createdId", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "1. Create opportunity #1 (ML)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Machine Learning for Crop Yield Prediction\",\n  \"description\": \"Build ML models that predict crop yield from satellite imagery and weather data.\",\n  \"research_area\": \"Machine Learning\",\n  \"faculty_name\": \"Dr. Ayesha Khan\",\n  \"department\": \"Computer Science\",\n  \"required_skills\": \"Python, scikit-learn, remote sensing basics\",\n  \"positions_available\": 2,\n  \"application_deadline\": \"2026-11-15\",\n  \"status\": \"Open\"\n}"
+        },
+        "url": "{{baseUrl}}"
+      }
+    },
+    {
+      "name": "2. Create opportunity #2 (IoT)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Low-Cost Water Quality Sensors\",\n  \"description\": \"Design and field-test low-cost IoT sensors for monitoring water quality in rural communities.\",\n  \"research_area\": \"IoT / Embedded Systems\",\n  \"faculty_name\": \"Dr. Bilal Ahmed\",\n  \"department\": \"Electrical Engineering\",\n  \"required_skills\": \"Arduino, C++, basic circuit design\",\n  \"positions_available\": 3,\n  \"application_deadline\": \"2026-10-30\",\n  \"status\": \"Open\"\n}"
+        },
+        "url": "{{baseUrl}}"
+      }
+    },
+    {
+      "name": "3. Create opportunity #3 (NLP)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Urdu Sentiment Analysis on Social Media\",\n  \"description\": \"Collect and annotate Urdu-language social media posts and train sentiment classification models.\",\n  \"research_area\": \"Natural Language Processing\",\n  \"faculty_name\": \"Dr. Sana Riaz\",\n  \"department\": \"Computer Science\",\n  \"required_skills\": \"Python, NLP basics, data annotation\",\n  \"positions_available\": 4,\n  \"application_deadline\": \"2026-09-20\",\n  \"status\": \"Open\"\n}"
+        },
+        "url": "{{baseUrl}}"
+      }
+    },
+    {
+      "name": "4. Get all opportunities",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}"
+      }
+    },
+    {
+      "name": "5. Get one opportunity by ID",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/1"
+      }
+    },
+    {
+      "name": "6. Update an opportunity",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"positions_available\": 5,\n  \"required_skills\": \"Python, scikit-learn, PyTorch, remote sensing\"\n}"
+        },
+        "url": "{{baseUrl}}/1"
+      }
+    },
+    {
+      "name": "7. Close an opportunity (status -> Closed)",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"Closed\"\n}"
+        },
+        "url": "{{baseUrl}}/1"
+      }
+    },
+    {
+      "name": "8. Delete an opportunity",
+      "request": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/3"
+      }
+    },
+    {
+      "name": "9. Get deleted opportunity (expect 404)",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/3"
+      }
+    },
+    {
+      "name": "10. Create with invalid data (expect 400)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"\",\n  \"description\": \"Missing most required fields on purpose.\",\n  \"positions_available\": -1\n}"
+        },
+        "url": "{{baseUrl}}"
+      }
+    }
+  ]
+}
