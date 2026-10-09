@@ -49,4 +49,8 @@ VALUES
      'Python, NLP basics, willingness to annotate data',
      4,
      '2026-09-20',
-     'Closed');
+     'Closed'),
+    ('Air Quality Monitoring with Low-Cost Sensors',
+     'Deploy and calibrate low-cost sensors to track urban air pollution across the city.',
+     'Environmental Science', 'Dr. Farah Naeem', 'Environmental Sciences',
+     'Data analysis, basic electronics, Python', 2, '2026-09-30', 'Closed');
