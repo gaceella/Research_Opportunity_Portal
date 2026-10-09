@@ -161,4 +161,4 @@ Update the collection's `baseUrl` variable if your server isn't running on
 
 - No data is hard-coded in the frontend; everything is fetched from the API.
 - `.env` is git-ignored — never commit real database credentials.
-- Sample rows in `schema.sql` are optional and can be deleted before your demo.
+
