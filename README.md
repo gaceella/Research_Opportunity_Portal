@@ -8,9 +8,7 @@ in one place, instead of scattering them across email, WhatsApp, and noticeboard
 - **Frontend:** HTML, CSS, and vanilla JavaScript (no build step)
 
 ## GitHub Repository
-https://github.com/YOUR_USERNAME/research-opportunity-portal
-
-*(Replace this with your actual repository link before submitting.)*
+https://github.com/gaceella/Research_Opportunity_Portal
 
 ## Project Structure
 
